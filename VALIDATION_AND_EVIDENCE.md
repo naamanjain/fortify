@@ -43,7 +43,7 @@ At the deployed operating point, the trained model's **F1 was 0.322** against th
 | Live HTTP runtime checks | real service process on loopback, real cookies | **17 passed** — readiness layering, 401 for anonymous callers, forged identity headers granting nothing, cookie attributes, uniform login failure message, purpose-declaration refusal, missing and invalid forgery tokens, the queue read contract, an authorised workflow persisting into a new session, invalid transitions changing nothing, cross-scope reads and writes answered identically to unknown records, scoped counts strictly smaller than all-units counts, auditor versus welfare refusals, aggregate search returning units only, sign-out revocation, per-client throttling with a retry hint, malformed body, oversized body refused at 413, a tampered audit row forcing the readiness endpoint to 503 and healing back to 200, and startup refusing a checksum-mismatched bundle and a missing database host |
 | Graceful-shutdown check | **node:20-slim v20.20.2** in a Linux container, stopped with the signal the production host sends | **1 passed** — exit code 0 (not a kill after the grace period), shutdown handler logged the triggering signal, and the connections the process opened were gone from the database server's session list |
 | Frontend checks | TypeScript build and unit suite | **29 passed**, type check clean, production build clean |
-| In-browser verification | headless Chrome driving the built application served by the hosted runtime | **30 of 30 steps passed** — 13 screenshots, zero console faults, zero failed network requests |
+| Live browser verification | headless Chrome driving the application at **https://fortify.urbantechx.in** | **37 of 37 steps passed** across welfare reviewer, commander and auditor journeys; reviewer workflow state survived a hard reload and a new sign-in; audit chain reported Verified; responsive layout measured at 390, 414, 768 and 1440 px |
 | Reference-implementation PostgreSQL path | **PostgreSQL 16.15**, throwaway container | **3 passed** — versioned migration runner creates the schema, the partial unique index enforces feedback idempotency, a real transition writes its audit row, two concurrent writers serialise on the row lock |
 
 ## 5. What the in-browser verification actually covered
@@ -61,7 +61,7 @@ Not a mock: the production frontend build, served by the pilot runtime itself, d
 | **Workflow through the interface** | Clicking a review action changed the visible state; the change survived a full page reload; the action appeared in the visible history; **a brand-new sign-in read the same persisted state** |
 | Restricted purpose | An aggregate-only account was offered 3 of 8 navigation entries; a direct URL to the welfare queue produced a restricted message with **zero** case cards; the audit view refused a welfare account |
 | Sign-out | Protected routes returned the sign-in screen with no data |
-| Narrow viewport | Sign-in card fitted 420 px with no horizontal overflow |
+| Responsive layout | Hosted layout measured at 390, 414, 768 and 1440 px for welfare reviewer and aggregate leader; no measured layout failures |
 | Console and network | No uncaught errors; the only logged failures were the deliberate 401/403 refusals the run was testing for |
 
 ## 6. Data provenance and integrity
@@ -94,14 +94,15 @@ The hosted runtime serves a compact, **precomputed synthetic bundle** rather tha
 | Startup fails loudly | A checksum-mismatched bundle and a missing database configuration each stopped the process with a specific error rather than starting a partial service |
 | Shutdown is clean | The production signal produced exit code 0 with the handler logged and the database connections released |
 
-## 8. Not tested
+## 8. Not tested or not yet established
 
 Stated so that no reader infers coverage that does not exist.
 
-- **Oracle MySQL 8** — never started. All database evidence is MariaDB 10.11.19 (plus PostgreSQL 16.15 for the reference implementation only).
-- **The target hosting account** — no deployment was performed; the procedure is written and unexecuted.
+- **Oracle MySQL 8** — never started. The hosted pilot and its integration evidence use MariaDB 10.11.19 (plus PostgreSQL 16.15 for the Python reference implementation only).
+- **Restorable live-host backup** — the hosting deployment is running, but a database export/restore artifact from the cPanel account was not obtained. The backup → mutate → restore → verify drill was performed only against a disposable MariaDB database.
 - **Independent penetration testing** — no external security tooling (vulnerability scanner, SQL-map style tester, network scanner, dedicated audit frameworks) was available on the development machine, so none ran.
 - **Dependency vulnerability advisories** — no advisory database was consulted for either runtime, so no claim is made about upstream CVEs.
-- **Accessibility conformance** — reviewed in earlier work and not re-certified by this release; the new sign-in and restricted states were exercised in the browser but not against an automated accessibility pass.
+- **Intermittent HTTP 503 cause (F-20)** — two 503 responses were observed during an earlier hosted browser run, clustered around Passenger restart markers. They were not reproduced in the subsequent 37/37 run or controlled restart; the cause remains unknown and the finding stays open.
+- **Accessibility conformance** — reviewed in earlier work and not re-certified by this release; the hosted sign-in and restricted states were exercised in the browser but not against an automated accessibility pass.
 - **Real-world validity of any kind** — no authorised data, no institutional approval, no prospective study, no human-factors evaluation.
 - **Graceful shutdown on the development platform** — measured to be impossible to exercise there because the platform delivers no interceptable signal to a spawned service process; verified on Linux instead, which is where the production host runs.
