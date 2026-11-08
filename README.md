@@ -44,6 +44,20 @@ A model score is **evidence for a review**, not a decision. Full detail in [SOLU
 
 Nine layers, read left to right: authorised operational information → validation and preparation → personal and contextual baselines → welfare signal and persistence policy → explanation and contributing evidence → review queue → human review → support and follow-up → feedback and auditable history. Two bands run across the whole design: access control is enforced on every request, and the out-of-scope list (diagnosis, discipline, autonomous action, self-report absence as evidence) is not a policy document but a construction rule. Prose version: [ARCHITECTURE_OVERVIEW.md](ARCHITECTURE_OVERVIEW.md).
 
+## Live demonstration access
+
+The hosted demonstration is available at **https://fortify.urbantechx.in**. It uses synthetic demonstration data and three shared, pre-provisioned accounts:
+
+| Demo role | Username | Password |
+|---|---|---|
+| Welfare reviewer | `demo-reviewer` | `DemoAdmin@666` |
+| Commander (aggregate view) | `demo-leader` | `DemoAdmin@666` |
+| Security auditor | `demo-auditor` | `DemoAdmin@666` |
+
+These are deliberately public demonstration credentials, not private reviewer accounts. The accounts share a demonstration environment: workflow changes may be visible to other visitors and may be reset during maintenance. Use them only to explore synthetic records. **Do not enter real names, personal information, operational records or confidential material.** There is no public registration.
+
+For the role-specific walkthrough and expected restrictions, see [DEMONSTRATION_GUIDE.md](DEMONSTRATION_GUIDE.md).
+
 ## What a reviewer actually sees
 
 | | |
@@ -73,15 +87,15 @@ Innovation in context: [INNOVATION.md](INNOVATION.md).
 | Evidence | Measured result |
 |---|---|
 | Behaviour test suite (analysis platform) | **450 passed, 4 skipped**, exit code 0, on a scratch database; the demonstration store was byte-identical afterwards |
-| Hosted pilot runtime tests | **14** unit + **11** database-integration + **17** live-HTTP + **1** graceful-shutdown checks, all exit code 0 |
+| Hosted pilot runtime tests | **42 passed, 0 failed, 1 skipped** across the pilot API suite; the Linux SIGTERM shutdown check also passed |
 | Frontend checks | **29** tests passing, type check clean, production build clean |
-| Browser verification | **30 of 30** steps passed against the built application served by the pilot itself, 13 screenshots, zero console faults, zero failed requests |
+| Live browser verification | **37 of 37** steps passed on the hosted site across reviewer, commander and auditor journeys; a reviewer workflow action survived a hard reload and a new sign-in; responsive layout was measured at 390, 414, 768 and 1440 px |
 | Live PostgreSQL path (reference implementation) | **3 of 3** checks passed on PostgreSQL 16.15 in a throwaway container |
-| Database compatibility | Migrations, constraints, transactions, row locking, session persistence, audit chain and a backup→restore→verify drill on **MariaDB 10.11.19** |
+| Database compatibility | The hosted pilot is connected to **MariaDB 10.11.19**; the initial migration created 12 tables and the live audit chain verified. The disposable-database integration and backup→restore→verify drill passed on MariaDB 10.11.19; a restorable backup of the live cPanel database has not yet been obtained |
 | Runtime floor | The service starts, serves requests and shuts down cleanly on **Node.js v20.20.2**, the documented minimum |
 | Data provenance | A reproducible **500-personnel, 180-day** synthetic environment; the served bundle carries its source commit and per-file SHA-256 checksums, verified at startup |
 
-What is *not* verified is listed with equal specificity in [LIMITATIONS_AND_FUTURE_SCOPE.md](LIMITATIONS_AND_FUTURE_SCOPE.md): no real-world validation, no live deployment, no Oracle MySQL 8 test, no independent penetration-test tooling on this machine, no dependency-CVE advisory check.
+What remains unverified is listed in [LIMITATIONS_AND_FUTURE_SCOPE.md](LIMITATIONS_AND_FUTURE_SCOPE.md): no real-world validation or institutional approval; Oracle MySQL 8 compatibility; a restorable backup of the live cPanel database; the cause of two intermittent HTTP 503 responses observed during an earlier run (not reproduced in the subsequent 37/37 run); independent penetration testing; and a dependency-CVE advisory check.
 
 ## Responsible use statement
 
