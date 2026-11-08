@@ -40,7 +40,8 @@ The implementation repository carries a permissive open-source licence for *its 
 - **Screenshots** — produced by the project from its own running application. They show a synthetic demonstration environment with generated identifiers. No third-party imagery, no real personnel data, and no user-supplied content.
 - **Architecture diagram** — authored for this project; no third-party icon set, template or stock graphic.
 - **Typography** — system fonts only. No bundled or licensed webfont is distributed here.
-- **No external media** — no video, audio or hosted demo link is published, because none exists that could be verified as working.
+- **Hosted demonstration** — https://fortify.urbantechx.in. Public synthetic demo credentials are documented in the README and demonstration guide. The shared accounts expose synthetic records only; do not submit real personal or operational information.
+- **No external media** — no third-party video or audio is distributed in this repository.
 
 If any material in this repository is later found to require attribution that is missing here, that attribution obligation is preserved and will be added rather than assumed away.
 
@@ -54,8 +55,8 @@ These materials are provided for evaluation purposes, without warranty of any ki
 
 ## Contact and permissions
 
-Requests to reproduce these materials beyond the permitted uses above, or to arrange access to a running demonstration instance, should be raised through the repository owner's GitHub profile.
+Requests to reproduce these materials beyond the permitted uses above should be raised through the repository owner's GitHub profile. The running synthetic demonstration and its shared evaluation credentials are documented in the README and demonstration guide.
 
 ---
 
-*Last updated: 2026-11-02.*
+*Last updated: 2026-11-08.*
