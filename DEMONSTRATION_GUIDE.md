@@ -4,9 +4,19 @@
 
 The demonstration environment is **synthetic**: a reproducible generated world of 500 personnel over 180 days. The identifiers shown (`P-0313`, `U-051` and similar) are generated pseudonyms for generated people. No real personnel, departmental or wellness data appears anywhere.
 
-**There is no public demo URL.** The application has not been deployed to a live instance, so no link is advertised here — a link that returns an error page would misrepresent the project's state. The screenshots below were captured from the application running locally, driven through a real browser against the real service, and every screen is the actual product rather than a design mockup. Access to a running instance can be arranged for evaluators on request.
+**Live demonstration:** https://fortify.urbantechx.in
 
-Reviewer accounts are created on the server by an administrator. There is no public registration and no shared demo user.
+The hosted instance uses synthetic data and three pre-provisioned shared demonstration accounts:
+
+| Role | Username | Password |
+|---|---|---|
+| Welfare reviewer | `demo-reviewer` | `DemoAdmin@666` |
+| Commander — aggregate view | `demo-leader` | `DemoAdmin@666` |
+| Security auditor | `demo-auditor` | `DemoAdmin@666` |
+
+These credentials are intentionally public for hackathon evaluation. They are shared accounts, not private identities. Changes made to synthetic workflow records may be visible to other visitors and may be reset during maintenance. Do not enter real names, personal information, operational records or confidential material. There is no public registration.
+
+The screenshots below were captured from the actual application, not design mockups. They illustrate the product screens; the live instance is the place to exercise the current hosted workflows.
 
 | | |
 |---|---|
@@ -103,4 +113,4 @@ This is not decoration. During verification, a stored audit event was deliberate
 
 ## What this demonstration does not show
 
-It does not show real personnel data, real-world accuracy, a live deployment, integration with a departmental identity provider, or a phone-width layout that works — the narrow-viewport shell is broken and is described in [LIMITATIONS_AND_FUTURE_SCOPE.md](LIMITATIONS_AND_FUTURE_SCOPE.md). Full measurement detail is in [VALIDATION_AND_EVIDENCE.md](VALIDATION_AND_EVIDENCE.md).
+It does not show real personnel data, real-world accuracy, institutional approval, or integration with a departmental identity provider. The hosted demonstration uses synthetic records only. Its responsive layout was measured at 390, 414, 768 and 1440 px; the screenshots in this repository remain illustrative captures rather than a complete mobile screenshot set. Full measurement detail is in [VALIDATION_AND_EVIDENCE.md](VALIDATION_AND_EVIDENCE.md).
