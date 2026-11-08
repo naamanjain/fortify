@@ -4,6 +4,10 @@
 
 *A privacy-conscious, human-in-the-loop welfare decision-support prototype for uniformed personnel.*
 
+> **[🚀 Open the Live FORTIFY Demo →](https://fortify.urbantechx.in)**  
+> Explore the hosted prototype with synthetic demonstration data. Demo accounts and the role-by-role guide are included below.
+
+
 FORTIFY explores whether authorised operational-pattern information — duty tempo, rest opportunity, deployment and unit context — can help a welfare organisation notice a meaningful change **earlier than a referral would**, and then hand that observation to a human being with enough context to act on it proportionately. It ranks nothing into a decision: every signal it raises arrives with the recorded factors behind it, is filtered to what the signed-in reviewer is authorised to see, and only ever moves forward through an explicit human action that is written to a tamper-evident history.
 
 The project is a **research and demonstration prototype built and evaluated entirely on synthetic data**. It is not an approved government system, it does not diagnose, and it is not a disciplinary instrument.
