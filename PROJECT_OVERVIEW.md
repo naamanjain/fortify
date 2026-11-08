@@ -30,8 +30,8 @@ The split matters for honesty: it means the numbers a reviewer sees are traceabl
 |---|---|
 | Implementation | Complete enough to run end to end and to be verified end to end |
 | Data | Synthetic only — a reproducible 500-personnel, 180-day demonstration environment |
-| Verification | 450 backend behaviour tests, 43 hosted-pilot checks, 29 frontend checks, 30 in-browser steps, all passing; details in [VALIDATION_AND_EVIDENCE.md](VALIDATION_AND_EVIDENCE.md) |
-| Deployment | **Not deployed.** No live instance has been operated; the deployment procedure is written and unexecuted |
+| Verification | 450 backend behaviour tests passed (4 skipped); 42 pilot API tests passed (1 skipped), 29 frontend tests passed, and 37/37 hosted browser steps passed across all three demo roles; details in [VALIDATION_AND_EVIDENCE.md](VALIDATION_AND_EVIDENCE.md) |
+| Deployment | **Deployed** to the Razorhost account at https://fortify.urbantechx.in using Node.js 20.20.2 and MariaDB 10.11.19; the live application, role journeys and workflow persistence were verified |
 | Real-world validation | **None.** No authorised data, no institutional approval, no prospective study |
 | Open-source release | **No.** This repository is presentation material; see [RIGHTS_NOTICE.md](RIGHTS_NOTICE.md) |
 
